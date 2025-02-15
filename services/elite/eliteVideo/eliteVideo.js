@@ -1,4 +1,4 @@
-const { EliteVideo, EliteVideoAnalytics } = require("../../../models");
+const { EliteVideo } = require("../../../models");
 const deleteFile = require("../../../utils/elite/deleteFile");
 const uploadToCloudinary = require("../../../utils/elite/uploadToCloudinary");
 
@@ -43,7 +43,6 @@ const eliteVideo = async (req, next) => {
         );
         cloudinaryUploadDetails.subtitle.secure_url =
           cloudinaryUploadResult.secure_url;
-        console.log(cloudinaryUploadResult);
       }
     }
 
@@ -91,11 +90,6 @@ const eliteVideo = async (req, next) => {
       producers: JSON.stringify(producers),
       studio,
       approvalStatus,
-    });
-
-    // create analytics row for video
-    const newVideoAnalytics = await EliteVideoAnalytics.create({
-      video_id: newVideo.dataValues.id,
     });
 
     return `Video successfully uploaded. Video ID: ${newVideo.dataValues.id}`;
