@@ -62,30 +62,21 @@ Content-Type: text/plain
 GET http://127.0.0.1:85/api/v1/elite/get-all-elite-videos
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
 
+
 ### get-elite-video-analytics
 GET http://127.0.0.1:85/api/v1/elite/get-elite-video-analytics/b66f23e0-ef66-4522-9faa-96db28990b32
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
 
-### get-elite-video-views-count
-GET http://127.0.0.1:85/api/v1/elite/get-all-elite-video-views-count/b66f23e0-ef66-4522-9faa-96db28990b32
+### add-video-views-analytics
+POST http://127.0.0.1:85/api/v1/elite/add-video-views-analytics
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
-
-
-### webhook-video-played
-GET http://127.0.0.1:85/api/v1/elite/webhook/video-played/b66f23e0-ef66-4522-9faa-96db28990b32
-
-
-### webhook-video-ended
-POST http://127.0.0.1:85/api/v1/elite/webhook/video-ended
 content-type: application/json
 
 {
   "videoId": "b66f23e0-ef66-4522-9faa-96db28990b32",
-  "minutesWatched": 2,
-  "finishedWatching": false
+  "durationWatched": 8,
+  "finishedWatching": true
 }
-
-
 
 
 ### create-elite-music
@@ -124,29 +115,19 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0L
 
 
 ### get-elite-music-analytics
-GET http://127.0.0.1:85/api/v1/elite/get-elite-music-analytics/8d81aac1-7b2f-4fef-9d64-a12c35196a5c
+GET http://127.0.0.1:85/api/v1/elite/get-elite-music-analytics/b66f23e0-ef66-4522-9faa-96db28990b32
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
 
-### get-elite-music-views-count
-GET http://127.0.0.1:85/api/v1/elite/get-elite-music-streams-count/8d81aac1-7b2f-4fef-9d64-a12c35196a5c
+### add-music-analytics
+POST http://127.0.0.1:85/api/v1/elite/add-music-analytics
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
-
-
-### webhook-music-played
-GET http://127.0.0.1:85/api/v1/elite/webhook/music-played/0ce49e21-7ac7-45ba-99cb-99948681f890
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
-
-
-### webhook-music-ended
-POST http://127.0.0.1:85/api/v1/elite/webhook/music-ended
 content-type: application/json
 
 {
-  "musicId": "0ce49e21-7ac7-45ba-99cb-99948681f890",
-  "minutesListened": 2.5,
-  "finishedPlaying": true
+  "musicId": "b66f23e0-ef66-4522-9faa-96db28990b32",
+  "durationListened":4,
+  "finishedListening": false
 }
-
 
 ### create-elite-podcast
 POST http://127.0.0.1:85/api/v1/elite/create-elite-podcast

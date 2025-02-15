@@ -2,12 +2,12 @@ const Joi = require("joi");
 const ErrorResponse = require("../../utils/errorResponse");
 
 const schema = Joi.object({
-  musicId: Joi.string().required(),
-  minutesListened: Joi.number().required(),
-  finishedPlaying: Joi.boolean(),
+  videoId: Joi.string().required(),
+  durationWatched: Joi.number().required(),
+  finishedWatching: Joi.boolean().required(),
 });
 
-const musicEndedWebhookObj = async (req, res, next) => {
+const addVideoViewsAnalyticsObj = async (req, res, next) => {
   try {
     // validating request body
     const value = await schema.validateAsync(req.body);
@@ -18,4 +18,4 @@ const musicEndedWebhookObj = async (req, res, next) => {
   }
 };
 
-module.exports = musicEndedWebhookObj;
+module.exports = addVideoViewsAnalyticsObj;

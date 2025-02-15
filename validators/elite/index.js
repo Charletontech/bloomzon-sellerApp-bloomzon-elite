@@ -1,11 +1,11 @@
 module.exports = {
-  validateEliteMusicDetails: require("./validateEliteMusicDetails"),
   validateEliteVideoDetails: require("./validateEliteVideoDetails"),
-  videoEndedWebhookObj: require("./videoEndedWebhookObj"),
-  musicEndedWebhookObj: require("./musicEndedWebhookObj"),
+  validateEliteMusicDetails: require("./validateEliteMusicDetails"),
+  addMusicAnalyticsObj: require("./addMusicAnalyticsObj"),
   validatePodcastObj: require("./validatePodcastObj"),
   addPodcastEpisodeObj: require("./addPodcastEpisodeObj"),
   podcastPlayedObj: require("./podcastPlayedObj"),
   validateBookObj: require("./validateBookObj"),
   editBookObj: require("./editBookObj"),
+  addVideoViewsAnalyticsObj: require("./addVideoViewsAnalyticsObj"),
 };

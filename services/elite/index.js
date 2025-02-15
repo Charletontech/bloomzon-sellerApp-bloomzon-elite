@@ -2,17 +2,13 @@ module.exports = {
   // importing all elite videos services
   eliteVideoService: require("./eliteVideo/eliteVideo"),
   getAllEliteVideosService: require("./eliteVideo/getAllEliteVideos"),
-  getAllEliteVideosAnalyticsService: require("./eliteVideo/getAllEliteVideosAnalytics"),
-  getAllEliteVideosViewsCountService: require("./eliteVideo/getAllEliteVideosViewsCount"),
-  videoPlayedWebhookService: require("./eliteVideo/videoPlayedWebhook"),
-  videoEndedWebhookService: require("./eliteVideo/videoEndedWebhook"),
+  getAllEliteVideoAnalyticsService: require("./eliteVideo/getAllEliteVideoAnalytics"),
+  addVideoViewsAnalyticsService: require("./eliteVideo/addVideoViewsAnalytics"),
   // importing all elite music services
   createEliteMusicService: require("./eliteMusic/createEliteMusic"),
   getAllEliteMusicService: require("./eliteMusic/getAllEliteMusic"),
   getAllEliteMusicAnalyticsService: require("./eliteMusic/getAllEliteMusicAnalytics"),
-  getAllEliteMusicStreamsCountService: require("./eliteMusic/getAllEliteMusicStreamsCount"),
-  musicPlayedWebhookService: require("./eliteMusic/musicPlayedWebhook"),
-  musicEndedWebhookService: require("./eliteMusic/musicEndedWebhook"),
+  addMusicAnalyticsService: require("./eliteMusic/addMusicAnalytics"),
   // importing all elite podcast services
   createElitePodcastService: require("./elitePodcast/createElitePodcast"),
   getPodcastsService: require("./elitePodcast/getPodcasts"),

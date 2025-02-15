@@ -2,16 +2,10 @@ const asyncHandler = require("../middleware/async");
 const {
   eliteVideoService,
   getAllEliteVideosService,
-  getAllEliteVideosAnalyticsService,
-  getAllEliteVideosViewsCountService,
-  videoPlayedWebhookService,
-  videoEndedWebhookService,
+  addVideoViewsAnalyticsService,
   createEliteMusicService,
   getAllEliteMusicService,
   getAllEliteMusicAnalyticsService,
-  getAllEliteMusicStreamsCountService,
-  musicPlayedWebhookService,
-  musicEndedWebhookService,
   createElitePodcastService,
   addPodcastEpisodeService,
   getPodcastEpisodesService,
@@ -22,6 +16,8 @@ const {
   editEliteBookService,
   getEliteBooksService,
   deleteEliteBookService,
+  addMusicAnalyticsService,
+  getAllEliteVideoAnalyticsService,
 } = require("../services/elite");
 const ErrorResponse = require("../utils/errorResponse");
 
@@ -52,9 +48,9 @@ exports.getAllEliteVideos = asyncHandler(async (req, res, next) => {
   }
 });
 
-exports.getAllEliteVideosAnalytics = asyncHandler(async (req, res, next) => {
+exports.getAllEliteVideoAnalytics = asyncHandler(async (req, res, next) => {
   try {
-    const responseObj = await getAllEliteVideosAnalyticsService(req, next);
+    const responseObj = await getAllEliteVideoAnalyticsService(req, next);
     const prepare = {
       success: true,
       data: responseObj,
@@ -64,30 +60,10 @@ exports.getAllEliteVideosAnalytics = asyncHandler(async (req, res, next) => {
     next(new ErrorResponse(err.message.replace(/[\\"]/gi, ""), 500));
   }
 });
-exports.getAllEliteVideosViewsCount = asyncHandler(async (req, res, next) => {
-  try {
-    const responseObj = await getAllEliteVideosViewsCountService(req, next);
-    const prepare = {
-      success: true,
-      data: responseObj.length !== 0 ? responseObj : null,
-    };
-    res.status(200).json(prepare);
-  } catch (err) {
-    next(new ErrorResponse(err.message.replace(/[\\"]/gi, ""), 500));
-  }
-});
-exports.videoPlayedWebhook = asyncHandler(async (req, res, next) => {
-  const responseObj = await videoPlayedWebhookService(req, next);
-  const prepare = {
-    success: true,
-    data: responseObj,
-  };
-  res.status(200).json(prepare);
-});
 
-exports.videoEndedWebhook = asyncHandler(async (req, res, next) => {
+exports.addVideoViewsAnalytics = asyncHandler(async (req, res, next) => {
   try {
-    const responseObj = await videoEndedWebhookService(req, next);
+    const responseObj = await addVideoViewsAnalyticsService(req, next);
     const prepare = {
       success: true,
       data: responseObj,
@@ -133,43 +109,13 @@ exports.getAllEliteMusicAnalytics = asyncHandler(async (req, res, next) => {
   res.status(200).json(prepare);
 });
 
-exports.getAllEliteMusicStreamsCount = asyncHandler(async (req, res, next) => {
-  try {
-    const responseObj = await getAllEliteMusicStreamsCountService(req, next);
-    const prepare = {
-      success: true,
-      data: responseObj.length !== 0 ? responseObj : null,
-    };
-    res.status(200).json(prepare);
-  } catch (err) {
-    next(new ErrorResponse(err.message.replace(/[\\"]/gi, ""), 500));
-  }
-});
-
-exports.musicPlayedWebhook = asyncHandler(async (req, res, next) => {
-  try {
-    const responseObj = await musicPlayedWebhookService(req, next);
-    const prepare = {
-      success: true,
-      data: responseObj,
-    };
-    res.status(200).json(prepare);
-  } catch (err) {
-    next(new ErrorResponse(err.message.replace(/[\\"]/gi, ""), 500));
-  }
-});
-
-exports.musicEndedWebhook = asyncHandler(async (req, res, next) => {
-  try {
-    const responseObj = await musicEndedWebhookService(req, next);
-    const prepare = {
-      success: true,
-      data: responseObj,
-    };
-    res.status(200).json(prepare);
-  } catch (err) {
-    next(new ErrorResponse(err.message.replace(/[\\"]/gi, ""), 500));
-  }
+exports.addMusicAnalytics = asyncHandler(async (req, res, next) => {
+  const responseObj = await addMusicAnalyticsService(req, next);
+  const prepare = {
+    success: true,
+    data: responseObj,
+  };
+  res.status(200).json(prepare);
 });
 
 // podcast controllers

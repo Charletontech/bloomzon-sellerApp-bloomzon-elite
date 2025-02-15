@@ -1,14 +1,14 @@
-const { EliteMusicAnalyticsData } = require("../../../models");
+const { EliteVideosAnalyticsData } = require("../../../models");
 
-const getAllEliteMusicAnalytics = async (req, next) => {
+const getAllEliteVideoAnalytics = async (req) => {
   try {
-    const musicId = req.params.musicId;
-    const analytics = await EliteMusicAnalyticsData.findAll({
-      where: { musicId },
+    const videoId = req.params.videoId;
+    const analytics = await EliteVideosAnalyticsData.findAll({
+      where: { videoId },
       raw: true,
     });
     if (analytics.length === 0)
-      throw new Error("No analytics was found for this song");
+      throw new Error("No analytics was found for this video");
 
     // configure key metrics
     var keyMetrics = {
@@ -25,10 +25,10 @@ const getAllEliteMusicAnalytics = async (req, next) => {
     var dropOffCount = 0;
     analytics.forEach((each) => {
       // set total watch time
-      keyMetrics.totalWatchTime += each.durationListened;
+      keyMetrics.totalWatchTime += each.durationWatched;
 
       // count how many viewers completed a video and those that didn't
-      if (each.finishedListening) {
+      if (each.finishedWatching) {
         completionCount++;
       } else {
         dropOffCount++;
@@ -50,5 +50,4 @@ const getAllEliteMusicAnalytics = async (req, next) => {
     throw new Error(err);
   }
 };
-
-module.exports = getAllEliteMusicAnalytics;
+module.exports = getAllEliteVideoAnalytics;

@@ -5,16 +5,10 @@ const router = express.Router();
 const {
   eliteVideo,
   getAllEliteVideos,
-  getAllEliteVideosAnalytics,
-  getAllEliteVideosViewsCount,
-  videoPlayedWebhook,
-  videoEndedWebhook,
+  addVideoViewsAnalytics,
   createEliteMusic,
   getAllEliteMusic,
   getAllEliteMusicAnalytics,
-  getAllEliteMusicStreamsCount,
-  musicPlayedWebhook,
-  musicEndedWebhook,
   createElitePodcast,
   addPodcastEpisode,
   getPodcastEpisodes,
@@ -25,6 +19,8 @@ const {
   editEliteBook,
   getEliteBooks,
   deleteEliteBook,
+  addMusicAnalytics,
+  getAllEliteVideoAnalytics,
 } = require("../controllers/elite");
 
 const { protect, verified } = require("../middleware/auth");
@@ -32,14 +28,14 @@ const { multerFileUpload, multerBookUpload } = require("../middleware/elite");
 
 const {
   validateEliteVideoDetails,
-  videoEndedWebhookObj,
   validateEliteMusicDetails,
-  musicEndedWebhookObj,
   validatePodcastObj,
   addPodcastEpisodeObj,
   podcastPlayedObj,
   validateBookObj,
   editBookObj,
+  addVideoViewsAnalyticsObj,
+  addMusicAnalyticsObj,
 } = require("../validators/elite");
 
 // videos routes
@@ -57,17 +53,14 @@ router.get(
   "/get-elite-video-analytics/:videoId",
   protect,
   verified,
-  getAllEliteVideosAnalytics
-);
-router.get(
-  "/get-all-elite-video-views-count/:videoId",
-  protect,
-  verified,
-  getAllEliteVideosViewsCount
+  getAllEliteVideoAnalytics
 );
 
-router.get("/webhook/video-played/:videoId", videoPlayedWebhook);
-router.post("/webhook/video-ended", videoEndedWebhookObj, videoEndedWebhook);
+router.post(
+  "/add-video-views-analytics",
+  addVideoViewsAnalyticsObj,
+  addVideoViewsAnalytics
+);
 
 // music routes
 router.post(
@@ -84,17 +77,7 @@ router.get(
   verified,
   getAllEliteMusicAnalytics
 );
-
-router.get(
-  "/get-elite-music-streams-count/:musicId",
-  protect,
-  verified,
-  getAllEliteMusicStreamsCount
-);
-
-router.get("/webhook/music-played/:musicId", musicPlayedWebhook);
-
-router.post("/webhook/music-ended", musicEndedWebhookObj, musicEndedWebhook);
+router.post("/add-music-analytics", addMusicAnalyticsObj, addMusicAnalytics);
 
 // Podcast routes
 router.post(
