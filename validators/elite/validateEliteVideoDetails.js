@@ -12,6 +12,7 @@ const schema = Joi.object({
   audioLanguage: Joi.string(),
   producers: Joi.array(),
   studio: Joi.string(),
+  approvalStatus: Joi.string(),
 });
 
 const validateEliteVideoDetails = async (req, res, next) => {
