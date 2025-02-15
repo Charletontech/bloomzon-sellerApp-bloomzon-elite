@@ -5,7 +5,7 @@ const getAllEliteMusic = async (req, next) => {
     const userId = req.user.id;
     const allEliteMusic = await EliteMusic.findAll({
       where: {
-        uploadedBy: "userId",
+        uploadedBy: userId,
       },
     });
     if (allEliteMusic.length === 0)
