@@ -97,7 +97,7 @@ const eliteVideo = async (req, next) => {
     uploadedFiles.forEach((file) => {
       deleteFile(file.path);
     });
-    new Error(err);
+    throw new Error(err);
   }
 };
 
