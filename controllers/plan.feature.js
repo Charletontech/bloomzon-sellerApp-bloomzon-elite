@@ -7,7 +7,7 @@ const {
     removePlanFeature,
     getPlanFeature,
     getOnePlanFeature,
-} = require("../services/Plan.feature");
+} = require("../services/plan.feature");
 
 exports.addPlanFeature = asyncHandler(async (req, res, next) => {
     const responseObj = await addPlanFeature(req);
