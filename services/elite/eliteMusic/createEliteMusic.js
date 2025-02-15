@@ -1,4 +1,4 @@
-const { EliteMusic, EliteMusicAnalytics } = require("../../../models");
+const { EliteMusic } = require("../../../models");
 const deleteFile = require("../../../utils/elite/deleteFile");
 const uploadToCloudinary = require("../../../utils/elite/uploadToCloudinary");
 
@@ -74,11 +74,6 @@ const createEliteMusic = async (req, next) => {
       genre,
       language,
       releaseDate,
-    });
-    console.log(newMusic.dataValues.id);
-
-    const newMusicAnalytic = await EliteMusicAnalytics.create({
-      musicId: newMusic.dataValues.id,
     });
 
     return `Music successfully uploaded. Song ID: ${newMusic.dataValues.id}`;
